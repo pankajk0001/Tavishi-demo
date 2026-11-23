@@ -972,6 +972,9 @@ html.is-refined #constellation,html.is-refined a[href="#wealth-constellation"]{d
 
 /* static copy: refined version only */
 .cmp-bar{display:none !important}
+.site-header{top:0}
+.preview-strip{display:none !important}
+.preview-note,.theme-switch{display:none !important}
 </style>
 </head>
 <body>
@@ -985,7 +988,7 @@ html.is-refined #constellation,html.is-refined a[href="#wealth-constellation"]{d
    and the AI assistant's briefing follow. Nothing below is repeated elsewhere.
    ========================================================================== */
 const SITE = {
-  status: "preview",                 // "preview" shows draft marks and missing-detail placeholders; set "live" at launch
+  status: "live",                 // "preview" shows draft marks and missing-detail placeholders; set "live" at launch
 
   company: {
     brand: "Tavishi Wealth",
@@ -1641,7 +1644,7 @@ function shellHTML() {
 
   '<div class="cookie-bar" id="cookie-bar" hidden><div class="wrap cookie-in"><p>' +
     (SITE.analytics.enabled ? "We use essential storage only. Optional, privacy-first analytics stay off unless you allow them."
-      : "This site uses essential storage only, to remember your colour theme. There is no tracking.") +
+      : "This site uses essential storage only. There is no tracking.") +
     ' <a class="text-link" href="#cookies">Cookie policy</a></p><div class="cluster">' +
     (SITE.analytics.enabled ? '<button class="btn btn-sm" type="button" data-cookie="all">Allow analytics</button>' : "") +
     '<button class="btn btn-sm btn-primary" type="button" data-cookie="essential">' + (SITE.analytics.enabled ? "Essential only" : "Understood") + "</button></div></div></div>" +
@@ -2175,8 +2178,8 @@ function legalContent(id) {
       ["In brief", ["This policy explains what personal data " + C.legalName + " handles, why, and the choices you have. It is written with India’s Digital Personal Data Protection Act, 2023 and the rules made under it in view."]],
       ["This site", ["This site does not store your enquiry. The form writes a message on your device, and it reaches us only when you send it from your own WhatsApp or email.",
         "Figures you enter into the tools stay in your browser. They are not sent to us.",
-        "The site remembers your colour theme in your browser. It uses no advertising trackers."]],
-      ["The AI assistant", ["If you type a question to the AI assistant, that text is sent to the AI service to produce an answer. Please do not type personal or financial details into it."]],
+        "The site uses no advertising trackers."]],
+      ["The profile summary", ["If you ask for a plain-words summary of your investor profile, your answers are sent to the AI service to write it. They do not include your name or contact details."]],
       ["What we collect, and why", ["Details you choose to send us: your name, your city and country, whether you are resident in India, a broad investment range, and how and when you would like to be contacted. We use them to reply to your enquiry.",
         "If you decide to invest, we collect the KYC details and documents the law requires, and use them only to complete KYC and carry out your instructions."]],
       ["Your consent", ["We act on your consent. You can withdraw it at any time by writing to " + C.email + ". Withdrawal does not affect anything done before it."]],
@@ -2197,7 +2200,7 @@ function legalContent(id) {
       ["Law", ["These terms are governed by the laws of India. The courts at Chandigarh have jurisdiction."]]
     ]},
     cookies: { title: "Cookie policy", blocks: [
-      ["What this site stores", ["Essential storage only. The site remembers two things in your browser: your colour theme, and that you have seen the storage notice.",
+      ["What this site stores", ["Essential storage only. The site remembers one thing in your browser: that you have seen the storage notice.",
         "It sets no advertising or tracking cookies."]],
       ["Analytics", [SITE.analytics.enabled ? "Privacy-first analytics run only if you allow them in the storage notice. You can change your choice at any time by clearing this site’s data in your browser."
         : "No analytics run on this site at present. If we add privacy-first analytics later, they will stay off unless you allow them."]],
@@ -2213,13 +2216,12 @@ function legalContent(id) {
       ["Personal data", ["For a concern about your personal data, please see our privacy policy."]]
     ]},
     "ai-use": { title: "AI use disclosure", blocks: [
-      ["Where we use AI", ["In two places. The Tavishi Concierge answers general questions about products, accounts and how to begin. A plain-words summary can follow your investor profile, if you ask for it."]],
+      ["Where we use AI", ["In one place. A plain-words summary can follow your investor profile, if you ask for it."]],
       ["What AI does not do", ["It does not score your investor profile. Fixed rules do that, and you can read them on the page.",
         "It does not recommend, compare or select products, predict returns, or make any decision about you."]],
       ["Its limits", ["AI can be wrong. Treat its answers as a starting point, and confirm anything important with us."]],
       ["A person, whenever you wish", ["You can reach a person at any time, on WhatsApp or by phone at " + C.phoneDisplay + "."]],
-      ["What is sent", ["The text you type to the assistant is sent to the AI service to produce the answer. Please do not include personal or financial details."]],
-      ["This preview", ["In this preview, the assistant runs on Claude, an AI model made by Anthropic, through the viewer’s own Claude account. Where that is not available, the Concierge shows a fixed set of prepared answers."]]
+      ["What is sent", ["If you ask for the summary, your profile answers are sent to the AI service to write it. They do not include your name or contact details."]]
     ]}
   };
   return pages[id];
